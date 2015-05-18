@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ressource>
+	<dvd categorie="action" titre="Arrow" realisateur="Mike" acteur="Amell" nbreExemplaire="5" dateSortie="15 novembre 2015" description="Histoire d'un archer vert"></dvd>
+</ressource>
