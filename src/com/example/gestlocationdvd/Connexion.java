@@ -9,6 +9,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -55,7 +57,7 @@ public class Connexion extends Activity implements OnClickListener {
 		        db.execSQL("INSERT INTO tab_client ('nom','numero','mdp') VALUES('John',93400,'123')");
 		        db.execSQL("INSERT INTO tab_client ('nom','numero','mdp') VALUES('Jean',93400,'123')");
 	        //______________________________________________
-	        
+	        //DONNEE ACTION
 	        try{
 	        	XmlPullParser xmlPullParser=getResources().getXml(R.xml.action);
 	        	while(xmlPullParser.getEventType()!=XmlPullParser.END_DOCUMENT){
@@ -77,7 +79,190 @@ public class Connexion extends Activity implements OnClickListener {
 	        		}
 	        		xmlPullParser.next();
 	        	}
-	        }catch(Exception e){
+	        }
+	        catch(Exception e)
+	        {
+	        	Log.i("ENI", "Erreur " + e.getMessage());
+	        	e.printStackTrace();
+	        }
+	        
+	        //___________________________________________
+	        //DONNEE AVENTURE
+	        try{
+	        	XmlPullParser xmlPullParser=getResources().getXml(R.xml.aventure);
+	        	while(xmlPullParser.getEventType()!=XmlPullParser.END_DOCUMENT){
+	        		if(xmlPullParser.getEventType()==XmlPullParser.START_TAG){
+	        			if(xmlPullParser.getName().equals("dvd")){	
+	        			ContentValues contentValues=new ContentValues();
+	        			contentValues.put("categorie", xmlPullParser.getAttributeValue(0));
+	        			contentValues.put("titre", xmlPullParser.getAttributeValue(1));
+	        			contentValues.put("realisateur", xmlPullParser.getAttributeValue(2));
+	        			contentValues.put("acteur", xmlPullParser.getAttributeValue(3));
+	        			contentValues.put("nbreExemplaire", Integer.parseInt(xmlPullParser.getAttributeValue(4)));
+	        			contentValues.put("dateSortie", xmlPullParser.getAttributeValue(5));
+	        			contentValues.put("description", xmlPullParser.getAttributeValue(6));
+	        			contentValues.put("limitAge", Integer.parseInt(xmlPullParser.getAttributeValue(7)));
+	        			contentValues.put("recompense", xmlPullParser.getAttributeValue(8));
+	        			contentValues.put("img", xmlPullParser.getAttributeValue(9));
+	        			db.insert("tab_film", null, contentValues);
+	        			}
+	        		}
+	        		xmlPullParser.next();
+	        	}
+	        }
+	        catch(Exception e)
+	        {
+	        	Log.i("ENI", "Erreur " + e.getMessage());
+	        	e.printStackTrace();
+	        }
+	        
+	        
+	        //_____________________________________
+	        //DONNEE COMEDIE
+	        try{
+	        	XmlPullParser xmlPullParser=getResources().getXml(R.xml.comedie);
+	        	while(xmlPullParser.getEventType()!=XmlPullParser.END_DOCUMENT){
+	        		if(xmlPullParser.getEventType()==XmlPullParser.START_TAG){
+	        			if(xmlPullParser.getName().equals("dvd")){	
+	        			ContentValues contentValues=new ContentValues();
+	        			contentValues.put("categorie", xmlPullParser.getAttributeValue(0));
+	        			contentValues.put("titre", xmlPullParser.getAttributeValue(1));
+	        			contentValues.put("realisateur", xmlPullParser.getAttributeValue(2));
+	        			contentValues.put("acteur", xmlPullParser.getAttributeValue(3));
+	        			contentValues.put("nbreExemplaire", Integer.parseInt(xmlPullParser.getAttributeValue(4)));
+	        			contentValues.put("dateSortie", xmlPullParser.getAttributeValue(5));
+	        			contentValues.put("description", xmlPullParser.getAttributeValue(6));
+	        			contentValues.put("limitAge", Integer.parseInt(xmlPullParser.getAttributeValue(7)));
+	        			contentValues.put("recompense", xmlPullParser.getAttributeValue(8));
+	        			contentValues.put("img", xmlPullParser.getAttributeValue(9));
+	        			db.insert("tab_film", null, contentValues);
+	        			}
+	        		}
+	        		xmlPullParser.next();
+	        	}
+	        }
+	        catch(Exception e)
+	        {
+	        	Log.i("ENI", "Erreur " + e.getMessage());
+	        	e.printStackTrace();
+	        }
+	        
+	        //________________________________________
+	        //DONNEE DRAME
+	        
+	        try{
+	        	XmlPullParser xmlPullParser=getResources().getXml(R.xml.drame);
+	        	while(xmlPullParser.getEventType()!=XmlPullParser.END_DOCUMENT){
+	        		if(xmlPullParser.getEventType()==XmlPullParser.START_TAG){
+	        			if(xmlPullParser.getName().equals("dvd")){	
+	        			ContentValues contentValues=new ContentValues();
+	        			contentValues.put("categorie", xmlPullParser.getAttributeValue(0));
+	        			contentValues.put("titre", xmlPullParser.getAttributeValue(1));
+	        			contentValues.put("realisateur", xmlPullParser.getAttributeValue(2));
+	        			contentValues.put("acteur", xmlPullParser.getAttributeValue(3));
+	        			contentValues.put("nbreExemplaire", Integer.parseInt(xmlPullParser.getAttributeValue(4)));
+	        			contentValues.put("dateSortie", xmlPullParser.getAttributeValue(5));
+	        			contentValues.put("description", xmlPullParser.getAttributeValue(6));
+	        			contentValues.put("limitAge", Integer.parseInt(xmlPullParser.getAttributeValue(7)));
+	        			contentValues.put("recompense", xmlPullParser.getAttributeValue(8));
+	        			contentValues.put("img", xmlPullParser.getAttributeValue(9));
+	        			db.insert("tab_film", null, contentValues);
+	        			}
+	        		}
+	        		xmlPullParser.next();
+	        	}
+	        }
+	        catch(Exception e)
+	        {
+	        	Log.i("ENI", "Erreur " + e.getMessage());
+	        	e.printStackTrace();
+	        }
+	        
+	        //_________________________________
+	        // DONNEE FANTASTIQUE
+	        
+	        try{
+	        	XmlPullParser xmlPullParser=getResources().getXml(R.xml.fantastique);
+	        	while(xmlPullParser.getEventType()!=XmlPullParser.END_DOCUMENT){
+	        		if(xmlPullParser.getEventType()==XmlPullParser.START_TAG){
+	        			if(xmlPullParser.getName().equals("dvd")){	
+	        			ContentValues contentValues=new ContentValues();
+	        			contentValues.put("categorie", xmlPullParser.getAttributeValue(0));
+	        			contentValues.put("titre", xmlPullParser.getAttributeValue(1));
+	        			contentValues.put("realisateur", xmlPullParser.getAttributeValue(2));
+	        			contentValues.put("acteur", xmlPullParser.getAttributeValue(3));
+	        			contentValues.put("nbreExemplaire", Integer.parseInt(xmlPullParser.getAttributeValue(4)));
+	        			contentValues.put("dateSortie", xmlPullParser.getAttributeValue(5));
+	        			contentValues.put("description", xmlPullParser.getAttributeValue(6));
+	        			contentValues.put("limitAge", Integer.parseInt(xmlPullParser.getAttributeValue(7)));
+	        			contentValues.put("recompense", xmlPullParser.getAttributeValue(8));
+	        			contentValues.put("img", xmlPullParser.getAttributeValue(9));
+	        			db.insert("tab_film", null, contentValues);
+	        			}
+	        		}
+	        		xmlPullParser.next();
+	        	}
+	        }
+	        catch(Exception e)
+	        {
+	        	Log.i("ENI", "Erreur " + e.getMessage());
+	        	e.printStackTrace();
+	        }
+	        //_________________________________
+	        //DONNEE DOCUMENTAIRE
+	        try{
+	        	XmlPullParser xmlPullParser=getResources().getXml(R.xml.documentaire);
+	        	while(xmlPullParser.getEventType()!=XmlPullParser.END_DOCUMENT){
+	        		if(xmlPullParser.getEventType()==XmlPullParser.START_TAG){
+	        			if(xmlPullParser.getName().equals("dvd")){	
+	        			ContentValues contentValues=new ContentValues();
+	        			contentValues.put("categorie", xmlPullParser.getAttributeValue(0));
+	        			contentValues.put("titre", xmlPullParser.getAttributeValue(1));
+	        			contentValues.put("realisateur", xmlPullParser.getAttributeValue(2));
+	        			contentValues.put("acteur", xmlPullParser.getAttributeValue(3));
+	        			contentValues.put("nbreExemplaire", Integer.parseInt(xmlPullParser.getAttributeValue(4)));
+	        			contentValues.put("dateSortie", xmlPullParser.getAttributeValue(5));
+	        			contentValues.put("description", xmlPullParser.getAttributeValue(6));
+	        			contentValues.put("limitAge", Integer.parseInt(xmlPullParser.getAttributeValue(7)));
+	        			contentValues.put("recompense", xmlPullParser.getAttributeValue(8));
+	        			contentValues.put("img", xmlPullParser.getAttributeValue(9));
+	        			db.insert("tab_film", null, contentValues);
+	        			}
+	        		}
+	        		xmlPullParser.next();
+	        	}
+	        }
+	        catch(Exception e)
+	        {
+	        	Log.i("ENI", "Erreur " + e.getMessage());
+	        	e.printStackTrace();
+	        }
+	        //_________________________________
+	        //DONNEE JEUNESSE
+	        try{
+	        	XmlPullParser xmlPullParser=getResources().getXml(R.xml.jeunesse);
+	        	while(xmlPullParser.getEventType()!=XmlPullParser.END_DOCUMENT){
+	        		if(xmlPullParser.getEventType()==XmlPullParser.START_TAG){
+	        			if(xmlPullParser.getName().equals("dvd")){	
+	        			ContentValues contentValues=new ContentValues();
+	        			contentValues.put("categorie", xmlPullParser.getAttributeValue(0));
+	        			contentValues.put("titre", xmlPullParser.getAttributeValue(1));
+	        			contentValues.put("realisateur", xmlPullParser.getAttributeValue(2));
+	        			contentValues.put("acteur", xmlPullParser.getAttributeValue(3));
+	        			contentValues.put("nbreExemplaire", Integer.parseInt(xmlPullParser.getAttributeValue(4)));
+	        			contentValues.put("dateSortie", xmlPullParser.getAttributeValue(5));
+	        			contentValues.put("description", xmlPullParser.getAttributeValue(6));
+	        			contentValues.put("limitAge", Integer.parseInt(xmlPullParser.getAttributeValue(7)));
+	        			contentValues.put("recompense", xmlPullParser.getAttributeValue(8));
+	        			contentValues.put("img", xmlPullParser.getAttributeValue(9));
+	        			db.insert("tab_film", null, contentValues);
+	        			}
+	        		}
+	        		xmlPullParser.next();
+	        	}
+	        }
+	        catch(Exception e)
+	        {
 	        	Log.i("ENI", "Erreur " + e.getMessage());
 	        	e.printStackTrace();
 	        }
@@ -117,5 +302,28 @@ public class Connexion extends Activity implements OnClickListener {
 				Toast.makeText(getApplicationContext(), "Identifiants incorrect", Toast.LENGTH_SHORT).show();	
 			}
 			
+		}
+		
+		
+		public boolean onCreateOptionsMenu(Menu menu) {
+			// Inflate the menu; this adds items to the action bar if it is present.
+			super.onCreateOptionsMenu(menu);
+			getMenuInflater().inflate(R.menu.menuconnexion, menu);
+//			item.setIcon(R.drawable.abc_list_divider_mtrl_alpha);
+			return true;
+		}
+		
+		
+		public boolean onOptionsItemSelected(MenuItem item) {
+			switch(item.getItemId())
+			{
+			case R.id.item1 : 
+				Intent intent = new Intent(Connexion.this, About.class);
+//				Bundle test=getIntent().getExtras();
+//				intent.putExtra("id_client", test.getInt("id_client"));
+				startActivity(intent);
+				break;
+			}
+			return true;
 		}
 }

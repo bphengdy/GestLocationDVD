@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ressource>
+	<dvd categorie="drame" titre="Fight Club" realisateur="David Fincher" acteur="Brad Pitt, Edward Norton, Helena Bonham Carter" nbreExemplaire="5" dateSortie="10 novembre 1999" description="Le narrateur, sans identité précise, vit seul, travaille seul, dort seul, mange seul ses plateaux-repas pour une personne comme beaucoup d'autres personnes seules qui connaissent la misère humaine, morale et sexuelle. C'est pourquoi il va devenir membre du Fight club, un lieu clandestin ou il va pouvoir retrouver sa virilité, l'échange et la communication. Ce club est dirigé par Tyler Durden, une sorte d'anarchiste entre gourou et philosophe qui prêche l'amour de son prochain. "
+	     limitAge="16" recompense="Awards" img="0x7f020040" ></dvd>
+
+	<dvd categorie="drame" titre="Nos étoiles contraires" realisateur="Josh Boone" acteur="Shailene Woodley, Ansel Elgort, Nat Wolff" nbreExemplaire="10" dateSortie="20 aout 2014" description="Hazel Grace et Gus sont deux adolescents hors-normes, partageant un humour ravageur et le mépris des conventions. Leur relation est elle-même inhabituelle, étant donné qu’ils se sont rencontrés et sont tombés amoureux lors d'un groupe de soutien pour les malades du cancer. "
+	     limitAge="18" recompense="Oscar" img="0x7f020048"></dvd>
+
+</ressource>

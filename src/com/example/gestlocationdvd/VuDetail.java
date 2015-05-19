@@ -70,7 +70,7 @@ public class VuDetail extends Activity {
 		Intent intent = getIntent();
 				
 		//Récupérer les valeurs INT 
-		Bundle test=getIntent().getExtras();
+		final Bundle test=getIntent().getExtras();
 						
 		//Utiliser lors de location du film
 		final int id_film=test.getInt("id_film");
@@ -124,13 +124,14 @@ public class VuDetail extends Activity {
 		//exécuter une requete Select 
 		
 		String [] listcol1 ={"id", "commentaire", "id_client", "id_film"};
-		String whereCond1="id_film=?";
-		final String [] whereArg1={String.valueOf(id_film)};
+		String whereCond1="id_film=? AND id_client=?";
 		final Bundle test22=getIntent().getExtras();
+		final String [] whereArg1= new String[] {String.valueOf(id_film),String.valueOf(test22.getInt("id_client"))};
+		Log.i("ENI",String.valueOf(String.valueOf(test22.getInt("id_client"))));
 		Cursor result1= db.query("tab_memo", listcol1, whereCond1, whereArg1, null,null, null, null);
 						
 						final int nbRec1= result1.getCount();
-						
+						Log.i("ENI",String.valueOf(nbRec1));
 						if(nbRec1>0){
 							result1.moveToFirst();
 							memo.setText(result1.getString(1));
@@ -151,7 +152,7 @@ public class VuDetail extends Activity {
 							}
 							else
 							{
-								db.update("tab_memo", contentValues5, "id_film=?",whereArg1);
+								db.update("tab_memo", contentValues5, "id_film=? AND id_client=?",whereArg1);
 							}
 							
 							Toast.makeText(getApplicationContext(), "Enregistré", Toast.LENGTH_SHORT).show();
@@ -168,11 +169,11 @@ public class VuDetail extends Activity {
 							}
 							else
 							{
-								db.update("tab_memo", contentValues5, "id_film=?",whereArg1);
+								db.update("tab_memo", contentValues5, "id_film=? AND id_client=?",whereArg1);
 							}
 							Toast.makeText(getApplicationContext(), "Enregistré", Toast.LENGTH_SHORT).show();
 						}
-						Intent intent2 = new Intent(VuDetail.this, Action.class);
+						Intent intent2 = new Intent(VuDetail.this, Accueil.class);
 						intent2.putExtra("id_client", test22.getInt("id_client"));
 						startActivity(intent2);
 		            }
@@ -207,7 +208,6 @@ public class VuDetail extends Activity {
 		
 		//Louer film
 		final CheckBox louer= (CheckBox) findViewById(R.id.louerfilm);
-				
 		
 		//Enregistrer les préférences 
 		SharedPreferences pref= getSharedPreferences("Action"+String.valueOf(test.getInt("id_film")),0);
@@ -218,13 +218,12 @@ public class VuDetail extends Activity {
 		boolean strDvd=pref.getBoolean("Action", false);
 		int strDvdid=pref.getInt("ID", -1);
 		//int strposition=pref.getInt("position", -1);
-			
+			//PERMET DE COCHER SI ELLE ETAIT COCHE AVANT
 		if((strDvd != false)& (strDvdid==id_film) /*& (strposition==position*/) {
 			louer.setChecked(true);
 			louer.refreshDrawableState();
 							
 		}
-		
 		
 		louer.setOnClickListener(new OnClickListener() {					
 			public void onClick(View v) {
@@ -245,16 +244,34 @@ public class VuDetail extends Activity {
 					//editeur.putInt("position", position);
 					editeur.putInt("ID", id_film);
 					editeur.commit();
-
+					
+					String [] listcol1 ={"id","id_client", "id_film", "date", "etat"};
+					String whereCond1="id_film=? AND id_client=?";
+					final String [] whereArg1= new String[] {String.valueOf(id_film),String.valueOf(test22.getInt("id_client"))};
+					Cursor NBREC= db.query("tab_louer", listcol1, whereCond1, whereArg1, null,null, null, null);
 					//databaseFilm= new DatabaseFilm(getApplicationContext(), "dbFilm.db", null, 1);
 					//db=databaseFilm.getWritableDatabase();
-					ContentValues contentValues=new ContentValues();
-					contentValues.put("id_film", id_film);
-					contentValues.put("id_client", 1);
-					contentValues.put("date", dateFacDB);
-					contentValues.put("etat",1);
-					db.insert("tab_louer", null, contentValues);
-
+					if(NBREC.getCount() <= 0)
+					{
+						ContentValues contentValues=new ContentValues();
+						contentValues.put("id_film", id_film);
+						contentValues.put("id_client", test.getInt("id_client"));
+						contentValues.put("date", dateFacDB);
+						contentValues.put("etat",1);
+						db.insert("tab_louer", null, contentValues);
+					}
+					else
+					{
+						ContentValues contentValues=new ContentValues();
+						contentValues.put("id_film", id_film);
+						contentValues.put("id_client", test.getInt("id_client"));
+						contentValues.put("date", dateFacDB);
+						contentValues.put("etat",1);
+						String [] whArgs = new String [] {String.valueOf(id_film), String.valueOf(test.getInt("id_client"))};
+						db.update("tab_louer", contentValues, "id_film=? AND id_client =?", whArgs );
+					}
+					
+					
 
 					//Baisse du nombre d'exemplaire disponible
 
@@ -279,7 +296,34 @@ public class VuDetail extends Activity {
 					//editeur.putInt("position", position);
 					editeur.putInt("ID", id_film);
 					editeur.commit();
-
+					
+					String [] listcol1 ={"id","id_client", "id_film", "date", "etat"};
+					String whereCond1="id_film=? AND id_client=?";
+					final String [] whereArg1= new String[] {String.valueOf(id_film),String.valueOf(test22.getInt("id_client"))};
+					Cursor NBREC2= db.query("tab_louer", listcol1, whereCond1, whereArg1, null,null, null, null);
+					if(NBREC2.getCount() <=0)
+					{
+					ContentValues contentValues=new ContentValues();
+					contentValues.put("id_film", id_film);
+					contentValues.put("id_client", test.getInt("id_client"));
+					contentValues.put("date", dateFacDB);
+					contentValues.put("etat",0);
+					db.insert("tab_louer", null, contentValues);
+					}
+					else
+					{
+						ContentValues contentValues=new ContentValues();
+						contentValues.put("id_film", id_film);
+						contentValues.put("id_client", test.getInt("id_client"));
+						contentValues.put("date", dateFacDB);
+						contentValues.put("etat",0);
+						String [] whArgs = new String [] {String.valueOf(id_film), String.valueOf(test.getInt("id_client"))};
+						db.update("tab_louer", contentValues, "id_film=? AND id_client =?", whArgs );
+					}
+					
+					
+					
+					
 
 					//UPDATE DU NOMBRE DE FILM MAXIMUM EMPRUNTER
 					ContentValues args2 = new ContentValues();
@@ -310,16 +354,26 @@ public class VuDetail extends Activity {
 	}
 	
 	public boolean onOptionsItemSelected(MenuItem item) {
+		Bundle test22=getIntent().getExtras();
 		switch(item.getItemId())
 		{
 		case R.id.item1 : 
 			Intent intent = new Intent(VuDetail.this, Accueil.class);
-			Bundle test22=getIntent().getExtras();
 			intent.putExtra("id_client", test22.getInt("id_client"));
 			startActivity(intent);
+			break;
 		case R.id.item2 :
-			Log.i("ENI", "Croissance");
-			return true;
+			Intent intent2 = new Intent(VuDetail.this, About.class);
+			startActivity(intent2);
+			break;
+		case R.id.item3:
+			Intent intent3 = new Intent(VuDetail.this, Connexion.class);
+			startActivity(intent3);
+			break;
+		case R.id.item4:
+			Intent intent4 = new Intent(VuDetail.this, Searchable.class);
+			intent4.putExtra("id_client", test22.getInt("id_client"));
+			startActivity(intent4);
 		}
 		return true;
 	}

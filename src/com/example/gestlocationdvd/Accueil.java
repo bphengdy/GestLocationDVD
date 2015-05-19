@@ -102,36 +102,42 @@ public class Accueil extends Activity implements OnClickListener {
 	
 	public void onClick(View arg0)
 	{
+		Bundle test=getIntent().getExtras();
 		switch (arg0.getId()) {
 		case R.id.Action:
 			intent = new Intent(this, Action.class);
-			Bundle test=getIntent().getExtras();
 			intent.putExtra("id_client", test.getInt("id_client"));
 //			intent.putExtra("nom", client.getNom());
 			startActivity(intent);
 			break;
 		case R.id.Aventure:
-			intent = new Intent(this, Fiction.class);
+			intent = new Intent(this, Aventure.class);
+			intent.putExtra("id_client", test.getInt("id_client"));
 			startActivity(intent);
 			break;
 		case R.id.Comedie:
-			intent = new Intent(this, Action.class);
+			intent = new Intent(this, Comedie.class);
+			intent.putExtra("id_client", test.getInt("id_client"));
 			startActivity(intent);
 			break;
 		case R.id.Drame:
-			intent = new Intent(this, Fiction.class);
+			intent = new Intent(this, Drame.class);
+			intent.putExtra("id_client", test.getInt("id_client"));
 			startActivity(intent);
 			break;
 		case R.id.Fantastique:
-			intent = new Intent(this, Fiction.class);
+			intent = new Intent(this, Fantastique.class);
+			intent.putExtra("id_client", test.getInt("id_client"));
 			startActivity(intent);
 			break;
 		case R.id.Documentaire:
-			intent = new Intent(this, Fiction.class);
+			intent = new Intent(this, Documentaire.class);
+			intent.putExtra("id_client", test.getInt("id_client"));
 			startActivity(intent);
 			break;
 		case R.id.Jeunesse:
-			intent = new Intent(this, Fiction.class);
+			intent = new Intent(this, Jeunesse.class);
+			intent.putExtra("id_client", test.getInt("id_client"));
 			startActivity(intent);
 			break;
 			
@@ -148,14 +154,26 @@ public class Accueil extends Activity implements OnClickListener {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		Bundle test2=getIntent().getExtras();
 		switch(item.getItemId())
 		{
 		case R.id.item1 : 
 			Intent intent = new Intent(Accueil.this, Accueil.class);
 			startActivity(intent);
-		case R.id.item2 :
-			Log.i("ENI", "Croissance");
-			return true;
+			break;
+		case R.id.item2:
+			Intent intent2 = new Intent(Accueil.this, About.class);
+			intent2.putExtra("id_client", test2.getInt("id_client"));
+			startActivity(intent2);
+			break;
+		case R.id.item3:
+			Intent intent3 = new Intent(Accueil.this, Connexion.class);
+			startActivity(intent3);
+			break;
+		case R.id.item4:
+			Intent intent4 = new Intent(Accueil.this, Searchable.class);
+			intent4.putExtra("id_client", test2.getInt("id_client"));
+			startActivity(intent4);
 		}
 		return true;
 	}

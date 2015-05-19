@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ressource>
+	<dvd categorie="comedie" titre="Intouchables" realisateur="Eric Toledano, Olivier Nakache" acteur="François Cluzet, Omar Sy, Anne Le Ny" nbreExemplaire="5" dateSortie="2 novembre 2011" description="A la suite d’un accident de parapente, Philippe, riche aristocrate, engage comme aide à domicile Driss, un jeune de banlieue tout juste sorti de prison. Bref la personne la moins adaptée pour le job. Ensemble ils vont faire cohabiter Vivaldi et Earth Wind and Fire, le verbe et la vanne, les costumes et les bas de survêtement... Deux univers vont se télescoper, s’apprivoiser, pour donner naissance à une amitié aussi dingue, drôle et forte qu’inattendue, une relation unique qui fera des étincelles et qui les rendra... Intouchables. "
+	     limitAge="10" recompense="Oscar" img="0x7f020044"></dvd>
+
+	<dvd categorie="comedie" titre="Good Morning England" realisateur="Richard Curtis" acteur="Tom Sturridge, Philip Seymour Hoffman, Rhys Ifans"
+	     nbreExemplaire="10" dateSortie="6 mai 2009" description="Carl vient de se faire renvoyer du lycée, et sa mère a décidé qu'il irait réfléchir à son avenir auprès de son parrain, Quentin. Il se trouve que celui-ci est le patron de Radio Rock, une radio pirate qui émet depuis un bateau en mer du Nord peuplé d'un équipage éclectique de DJ's rock and roll. À leur tête se trouve le Comte, un Américain exubérant, véritable dieu des ondes en synergie totale avec la musique. A ses côtés, ses fidèles animateurs : Dave, ironique, intelligent et d'un humour acéré ; l'adorable Simon, qui cherche l'amour ; l'énigmatique Midnight Mark, séduisant et silencieux ; Wee Small Hours Bob, le DJ des petites heures du matin, accro à la musique folk et à la drogue, Thick Kevin, qui possède l'intelligence la plus microscopique du monde ; On-the-Hour John, le chroniqueur des actualités, et Angus The Nut Nutsford, qui est sans doute l'homme le plus agaçant d'Angleterre...
+La vie en mer du Nord est riche en événements... "
+ limitAge="10" recompense="" img="0x7f020041"></dvd>
+
+	<dvd categorie="comedie" titre="Babysitting" realisateur="Philippe Lacheau, Nicolas Benamou" acteur="Philippe Lacheau, Alice David, Vincent Desagnat" nbreExemplaire="15" dateSortie="16 avril 2014" description="Faute de baby-sitter pour le week-end, Marc Schaudel confie son fils Remy à Franck, son employé, un type sérieux selon lui. Sauf que Franck a 30 ans ce soir et que Rémy est un sale gosse capricieux. Au petit matin, Marc et sa femme Claire sont réveillés par un appel de la police. Rémy et Franck ont disparu ! Au milieu de leur maison saccagée, la police a retrouvé une caméra. Marc et Claire découvrent hallucinés les images tournées pendant la soirée."
+	     limitAge="12" recompense="Oscar" img="0x7f02003d"></dvd>
+
+</ressource>

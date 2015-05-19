@@ -118,13 +118,29 @@ public class Action extends Activity {
 	
 	
 	public boolean onOptionsItemSelected(MenuItem item) {
+		Bundle test=getIntent().getExtras();
 		switch(item.getItemId())
 		{
 		case R.id.item1 : 
 			Intent intent = new Intent(Action.this, Accueil.class);
-			Bundle test=getIntent().getExtras();
+			
 			intent.putExtra("id_client", test.getInt("id_client"));
 			startActivity(intent);
+			break;
+		case R.id.item2:
+			Intent intent2 = new Intent(Action.this, About.class);
+			Bundle test2=getIntent().getExtras();
+			intent2.putExtra("id_client", test2.getInt("id_client"));
+			startActivity(intent2);
+			break;
+		case R.id.item3:
+			Intent intent3 = new Intent(Action.this, Connexion.class);
+			startActivity(intent3);
+			break;
+		case R.id.item4:
+			Intent intent4 = new Intent(Action.this, Searchable.class);
+			intent4.putExtra("id_client", test.getInt("id_client"));
+			startActivity(intent4);
 		}
 		return true;
 	}

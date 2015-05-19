@@ -28,6 +28,14 @@
         <activity android:name="Action"></activity>
         <activity android:name="VuDetail"></activity>
         <activity android:name="Accueil"></activity>
+        <activity android:name="About"></activity>
+        <activity android:name="Searchable"></activity>
+        <activity android:name="Aventure"></activity>
+        <activity android:name="Comedie"></activity>
+        <activity android:name="Drame"></activity>
+        <activity android:name="Jeunesse"></activity>
+        <activity android:name="Documentaire"></activity>
+        <activity android:name="Fantastique"></activity>
     </application>
-
+	
 </manifest>
