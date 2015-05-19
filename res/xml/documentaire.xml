@@ -2,10 +2,10 @@
 
 <ressource>
 	<dvd categorie="documentaire" titre="CitizenFour" realisateur="Laura Poitra" acteur="Edward Snowden, Glenn Greenwald, Laura Poitras" nbreExemplaire="5" dateSortie="4 mars 2015" description="En 2013, Edward Snowden déclenche l’un des plus grands séismes politiques aux Etats-Unis en révélant des documents secret-défense de la NSA. Sous le nom le code « CITIZENFOUR », il contacte la documentariste américaine Laura Poitras. Elle part le rejoindre à Hong Kong et réalise en temps réel CITIZENFOUR, un document historique unique et un portrait intime d’Edward Snowden. "
-	     limitAge="00" recompense="" img="0x7f020040" ></dvd>
+	     limitAge="00" recompense="" img="0x7f020005" ></dvd>
 
 	<dvd categorie="documentaire" titre="Le cauchemar de Darwin" realisateur="Hubert Sauper" acteur="acteurs inconnus" nbreExemplaire="10" dateSortie="2 mars 2005" description="Les rives du plus grand lac tropical du monde, considéré comme le berceau de l'humanité, sont aujourd'hui le théâtre du pire cauchemar de la mondialisation."
-	     limitAge="10" recompense="" img="0x7f020041" ></dvd>
+	     limitAge="10" recompense="" img="0x7f020006" ></dvd>
 
 </ressource>
 	

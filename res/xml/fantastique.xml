@@ -2,10 +2,10 @@
 
 <ressource>
 	<dvd categorie="fantastique" titre="Cendrillon" realisateur="Kenneth Branagh" acteur="Lily James, Cate Blanchett, Richard Madden" nbreExemplaire="5" dateSortie="25 mars 2015" description="Le père d’Ella, un marchand, s’est remarié après la mort tragique de la mère de la jeune fille. Pour l’amour de son père, Ella accueille à bras ouverts sa nouvelle belle-mère et les filles de celle-ci, Anastasie et Javotte"
-	     limitAge="00" recompense="" img="0x7f02003f" ></dvd>
+	     limitAge="00" recompense="" img="0x7f020004" ></dvd>
 
 	<dvd categorie="fantastique" titre="Adaline" realisateur="Lee Toland Krieger" acteur="Blake Lively, Michiel Huisman, Harrison Ford " nbreExemplaire="10" dateSortie="22 mai 2015" description="Après un accident qui aurait dû lui être fatal, la belle Adaline cesse de vieillir. Aujourd'hui, bien qu'ayant vécu près de huit décennies, elle est toujours âgée de 29 ans. Après avoir mené une existence solitaire afin de ne jamais révéler son secret, une rencontre fortuite avec le philanthrope et charismatique Ellis Jones, va raviver sa passion de la vie et de l'amour."
-	     limitAge="10" recompense="Awards" img="0x7f02003b" ></dvd>
+	     limitAge="10" recompense="Awards" img="0x7f020000" ></dvd>
 
 </ressource>
 	
