@@ -1,26 +1,16 @@
 package com.example.gestlocationdvd;
 
-import org.xmlpull.v1.XmlPullParser;
-
-import com.example.gestlocationdvd.R;
-
-import data.locdvd.Client;
-import data.locdvd.DatabaseFilm;
-import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.SubMenu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
+import data.locdvd.DatabaseFilm;
 
 public class Accueil extends Activity implements OnClickListener {
 
