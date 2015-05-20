@@ -45,7 +45,7 @@ public class Connexion extends Activity implements OnClickListener {
 		      Log.i("ENI", "FILM="+nbrCol);
 		      result.close();
 		      
-		//      if(nbrCol<=0){  //A METTRE EN COM POUR RECREER LA BDD
+		      if(nbrCol<=0){  //A METTRE EN COM POUR RECREER LA BDD
 		        db.execSQL("DROP TABLE IF EXISTS tab_film");
 		        db.execSQL("DROP TABLE IF EXISTS tab_client");
 		        db.execSQL("DROP TABLE IF EXISTS tab_memo");
@@ -269,7 +269,8 @@ public class Connexion extends Activity implements OnClickListener {
 		      }
 	        
 	        
-	//	} //LIMITER CREATION BDD
+	
+		} //LIMITER CREATION BDD
 
 		@Override
 		public void onClick(View v) {

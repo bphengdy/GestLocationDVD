@@ -44,7 +44,7 @@ public class Jeunesse extends Activity {
 		Cursor result= db.query("tab_film", listcol, whereCond, whereArg, null,null, null, null);
 		
 		int nbRec= result.getCount();
-		Log.i("ENI", "Nbr Data = "+ String.valueOf(nbRec));
+	//	Log.i("ENI", "Nbr Data = "+ String.valueOf(nbRec));
 		
 		if(nbRec>0){
 			

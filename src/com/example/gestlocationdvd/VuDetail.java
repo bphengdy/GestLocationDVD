@@ -52,7 +52,7 @@ public class VuDetail extends Activity {
 		
 		
 
-		//Récupération des id des TextView De Fiche.xml
+		//Récupération des id des TextView De VuDetail.xml
 		titre= (TextView) findViewById(R.id.titreFiche);
 		realisateur= (TextView) findViewById(R.id.realisateurFiche);
 		datesortie=(TextView) findViewById(R.id.dateSortie);
@@ -67,7 +67,7 @@ public class VuDetail extends Activity {
 				
 				
 		//Récupérer les valeurs string
-		Intent intent = getIntent();
+		final Intent intent = getIntent();
 				
 		//Récupérer les valeurs INT 
 		final Bundle test=getIntent().getExtras();
@@ -87,7 +87,7 @@ public class VuDetail extends Activity {
 		Cursor result= db.query("tab_film", listcol, whereCond, whereArg, null,null, null, null);
 		
 		int nbRec= result.getCount();
-		Log.i("ENI", "Nbr Data = "+ String.valueOf(nbRec));
+	//	Log.i("ENI", "Nbr Data = "+ String.valueOf(nbRec));
 		
 		if(nbRec>0){
 			
@@ -127,11 +127,11 @@ public class VuDetail extends Activity {
 		String whereCond1="id_film=? AND id_client=?";
 		final Bundle test22=getIntent().getExtras();
 		final String [] whereArg1= new String[] {String.valueOf(id_film),String.valueOf(test22.getInt("id_client"))};
-		Log.i("ENI",String.valueOf(String.valueOf(test22.getInt("id_client"))));
+	//	Log.i("ENI",String.valueOf(String.valueOf(test22.getInt("id_client"))));
 		Cursor result1= db.query("tab_memo", listcol1, whereCond1, whereArg1, null,null, null, null);
 						
 						final int nbRec1= result1.getCount();
-						Log.i("ENI",String.valueOf(nbRec1));
+					//	Log.i("ENI",String.valueOf(nbRec1));
 						if(nbRec1>0){
 							result1.moveToFirst();
 							memo.setText(result1.getString(1));
@@ -207,26 +207,36 @@ public class VuDetail extends Activity {
 		
 		
 		//Louer film
-		final CheckBox louer= (CheckBox) findViewById(R.id.louerfilm);
-		
-		//Enregistrer les préférences 
-		SharedPreferences pref= getSharedPreferences("Action"+String.valueOf(test.getInt("id_film")),0);
-		final SharedPreferences.Editor editeur=pref.edit();
-				
-		
-		//Savoir si la préférence est coché
-		boolean strDvd=pref.getBoolean("Action", false);
-		int strDvdid=pref.getInt("ID", -1);
-		//int strposition=pref.getInt("position", -1);
-			//PERMET DE COCHER SI ELLE ETAIT COCHE AVANT
-		if((strDvd != false)& (strDvdid==id_film) /*& (strposition==position*/) {
-			louer.setChecked(true);
-			louer.refreshDrawableState();
-							
+		final CheckBox cb = (CheckBox) findViewById(R.id.louerfilm);
+		String [] listcol2 ={"id","id_film","id_client","date","etat"};
+		String whereCond2="id_client=?";
+		String [] whereArg2={String.valueOf(test22.getInt("id_client"))};
+		Log.i("ENI","Id du client :"+String.valueOf(test22.getInt("id_client")));
+		final Cursor result2= db.query("tab_louer", listcol2, whereCond2, whereArg2, null,null, null, null);
+		Log.i("ENI","Nb Louer : "+String.valueOf(result2.getCount()));
+		result2.moveToFirst();
+		//INITIALISATION DE LA CHECKBOX
+		if(result2.getCount() <=0)
+		{
+			cb.setChecked(false);
+		}
+		else
+		{
+			if(result2.getInt(result2.getColumnIndex("etat")) ==0)
+			{
+				cb.setChecked(false);
+			}
+			else
+			{
+				cb.setChecked(true);
+			}
 		}
 		
-		louer.setOnClickListener(new OnClickListener() {					
-			public void onClick(View v) {
+		cb.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) 
+			{
 				//Récupération de la date d'aujourd'hui
 				final Calendar c = Calendar.getInstance();
 				int mYear = c.get(Calendar.YEAR);
@@ -236,113 +246,108 @@ public class VuDetail extends Activity {
 				Date date = new Date(mYear - 1900, mMonth, mDay);
 				String dateFacDB = DateFormat.format("yyyy.MM.dd", date).toString();
 				
-				if(louer.isChecked()){
-					//drapeau=true;
+				
+				if(( result2.getCount()) <=0 && (cb.isChecked() ))
+				{
 					Toast toast = Toast.makeText(getApplicationContext(),"Film Loué", Toast.LENGTH_LONG);
 					toast.show();
-					editeur.putBoolean("Action", true);
-					//editeur.putInt("position", position);
-					editeur.putInt("ID", id_film);
-					editeur.commit();
-					
 					String [] listcol1 ={"id","id_client", "id_film", "date", "etat"};
 					String whereCond1="id_film=? AND id_client=?";
 					final String [] whereArg1= new String[] {String.valueOf(id_film),String.valueOf(test22.getInt("id_client"))};
 					Cursor NBREC= db.query("tab_louer", listcol1, whereCond1, whereArg1, null,null, null, null);
-					//databaseFilm= new DatabaseFilm(getApplicationContext(), "dbFilm.db", null, 1);
-					//db=databaseFilm.getWritableDatabase();
-					if(NBREC.getCount() <= 0)
-					{
-						ContentValues contentValues=new ContentValues();
-						contentValues.put("id_film", id_film);
-						contentValues.put("id_client", test.getInt("id_client"));
-						contentValues.put("date", dateFacDB);
-						contentValues.put("etat",1);
-						db.insert("tab_louer", null, contentValues);
-					}
-					else
-					{
-						ContentValues contentValues=new ContentValues();
-						contentValues.put("id_film", id_film);
-						contentValues.put("id_client", test.getInt("id_client"));
-						contentValues.put("date", dateFacDB);
-						contentValues.put("etat",1);
-						String [] whArgs = new String [] {String.valueOf(id_film), String.valueOf(test.getInt("id_client"))};
-						db.update("tab_louer", contentValues, "id_film=? AND id_client =?", whArgs );
-					}
+					Log.i("ENI","IF && CB == 0: "+String.valueOf(NBREC.getCount()));
 					
+					ContentValues contentValues=new ContentValues();
+					contentValues.put("id_film", id_film);
+					contentValues.put("id_client", test22.getInt("id_client"));
+					contentValues.put("date", dateFacDB);
+					contentValues.put("etat",1);
+					String [] whArgs = new String [] {String.valueOf(id_film), String.valueOf(test.getInt("id_client"))};
+					db.insert("tab_louer", null, contentValues);
+					Log.i("ENI"," IF ET CB Ajouté");
 					
-
-					//Baisse du nombre d'exemplaire disponible
-
+					//NB EXEMPLAIRE EN BAISSE
 					nbr1=nbrExemplaire-1;
-
-
 					ContentValues args1 = new ContentValues();
 					args1.put("nbreExemplaire", nbr1);
 					db.update("tab_film", args1, "id="+id_film, null);
-
-				}else{ // RENDRE UN FILM
-
-					//Bundle test1=getIntent().getExtras();
-
-					//databaseFilm= new DatabaseFilm(getApplicationContext(), "dbFilm.db", null, 1);
-					//db=databaseFilm.getWritableDatabase();
-					Toast toast = Toast.makeText(getApplicationContext(),"Film Rendu", Toast.LENGTH_LONG);
+				}
+				else if(cb.isChecked())
+				{
+					Toast toast = Toast.makeText(getApplicationContext(),"Film Loué", Toast.LENGTH_LONG);
 					toast.show();
-					nbr=nbrExemplaire+1;
-					//drapeau=false;
-					editeur.putBoolean("Action", false);
-					//editeur.putInt("position", position);
-					editeur.putInt("ID", id_film);
-					editeur.commit();
-					
 					String [] listcol1 ={"id","id_client", "id_film", "date", "etat"};
 					String whereCond1="id_film=? AND id_client=?";
 					final String [] whereArg1= new String[] {String.valueOf(id_film),String.valueOf(test22.getInt("id_client"))};
-					Cursor NBREC2= db.query("tab_louer", listcol1, whereCond1, whereArg1, null,null, null, null);
-					if(NBREC2.getCount() <=0)
-					{
+					Cursor NBREC= db.query("tab_louer", listcol1, whereCond1, whereArg1, null,null, null, null);
+					Log.i("ENI","IF : "+String.valueOf(NBREC.getCount()));
+					
 					ContentValues contentValues=new ContentValues();
 					contentValues.put("id_film", id_film);
-					contentValues.put("id_client", test.getInt("id_client"));
+					contentValues.put("id_client", test22.getInt("id_client"));
+					contentValues.put("date", dateFacDB);
+					contentValues.put("etat",1);
+					String [] whArgs = new String [] {String.valueOf(id_film), String.valueOf(test22.getInt("id_client"))};
+					db.update("tab_louer", contentValues, "id_film=? AND id_client =?", whArgs );
+					
+					//NB EXEMPLAIRE EN BAISSE
+					nbr1=nbrExemplaire-1;
+					ContentValues args1 = new ContentValues();
+					args1.put("nbreExemplaire", nbr1);
+					db.update("tab_film", args1, "id="+id_film, null);
+				}
+				else if(cb.isChecked()==false && result2.getCount() <= 0) //CB IS NOT CHECKED
+				{
+					Toast toast = Toast.makeText(getApplicationContext(),"Film rendu", Toast.LENGTH_LONG);
+					toast.show();
+					String [] listcol1 ={"id","id_client", "id_film", "date", "etat"};
+					String whereCond1="id_film=? AND id_client=?";
+					final String [] whereArg1= new String[] {String.valueOf(id_film),String.valueOf(test22.getInt("id_client"))};
+					Cursor NBREC= db.query("tab_louer", listcol1, whereCond1, whereArg1, null,null, null, null);
+					Log.i("ENI","ELSE & CB == 0: "+String.valueOf(NBREC.getCount()));
+					
+					ContentValues contentValues=new ContentValues();
+					contentValues.put("id_film", id_film);
+					contentValues.put("id_client", test22.getInt("id_client"));
 					contentValues.put("date", dateFacDB);
 					contentValues.put("etat",0);
+					String [] whArgs = new String [] {String.valueOf(id_film), String.valueOf(test.getInt("id_client"))};
 					db.insert("tab_louer", null, contentValues);
-					}
-					else
-					{
-						ContentValues contentValues=new ContentValues();
-						contentValues.put("id_film", id_film);
-						contentValues.put("id_client", test.getInt("id_client"));
-						contentValues.put("date", dateFacDB);
-						contentValues.put("etat",0);
-						String [] whArgs = new String [] {String.valueOf(id_film), String.valueOf(test.getInt("id_client"))};
-						db.update("tab_louer", contentValues, "id_film=? AND id_client =?", whArgs );
-					}
 					
-					
-					
-					
-
-					//UPDATE DU NOMBRE DE FILM MAXIMUM EMPRUNTER
-					ContentValues args2 = new ContentValues();
-					args2.put("nbreExemplaire", nbr);
-					db.update("tab_film", args2, "id="+id_film, null);
-
-					//SUPPRESION DU FILM DANS LA table louer
-					ContentValues args3 = new ContentValues();
-					args3.put("etat", 0);
-					db.update("tab_louer", args3, "id_film="+id_film, null);
-					
-					//db.delete("tab_louer", "id_film=?",new String[] {String.valueOf(id_film)});
-
-
-
+					//EXEMPLAIRE EN PLUS
+					nbr1=nbrExemplaire+1;
+					ContentValues args1 = new ContentValues();
+					args1.put("nbreExemplaire", nbr1);
+					db.update("tab_film", args1, "id="+id_film, null);
 				}
-
+				else
+				{
+					Toast toast = Toast.makeText(getApplicationContext(),"Film rendu", Toast.LENGTH_LONG);
+					toast.show();
+					String [] listcol1 ={"id","id_client", "id_film", "date", "etat"};
+					String whereCond1="id_film=? AND id_client=?";
+					final String [] whereArg1= new String[] {String.valueOf(id_film),String.valueOf(test22.getInt("id_client"))};
+					Cursor NBREC= db.query("tab_louer", listcol1, whereCond1, whereArg1, null,null, null, null);
+					Log.i("ENI","ELSE : "+String.valueOf(NBREC.getCount()));
+					
+					ContentValues contentValues=new ContentValues();
+					contentValues.put("id_film", id_film);
+					contentValues.put("id_client", test22.getInt("id_client"));
+					contentValues.put("date", dateFacDB);
+					contentValues.put("etat",0);
+					String [] whArgs = new String [] {String.valueOf(id_film), String.valueOf(test22.getInt("id_client"))};
+					db.update("tab_louer", contentValues, "id_film=? AND id_client =?", whArgs );
+					
+					//EXEMPLAIRE EN PLUS
+					nbr1=nbrExemplaire+1;
+					ContentValues args1 = new ContentValues();
+					args1.put("nbreExemplaire", nbr1);
+					db.update("tab_film", args1, "id="+id_film, null);
+				}
+				
 			}
 		});
+		
 	}
 	}
 	
