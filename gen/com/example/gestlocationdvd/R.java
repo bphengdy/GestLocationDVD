@@ -18,8 +18,8 @@ public final class R {
          would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
     
          */
-        public static final int activity_horizontal_margin=0x7f050000;
-        public static final int activity_vertical_margin=0x7f050001;
+        public static final int activity_horizontal_margin=0x7f060000;
+        public static final int activity_vertical_margin=0x7f060001;
     }
     public static final class drawable {
         public static final int adaline=0x7f020000;
@@ -47,47 +47,52 @@ public final class R {
         public static final int viy=0x7f020016;
     }
     public static final class id {
-        public static final int Action=0x7f090001;
-        public static final int Aventure=0x7f090002;
-        public static final int Comedie=0x7f090003;
-        public static final int Documentaire=0x7f090006;
-        public static final int Drame=0x7f090004;
-        public static final int Fantastique=0x7f090005;
-        public static final int Jeunesse=0x7f090007;
-        public static final int ListView01=0x7f090011;
-        public static final int ListView02=0x7f09000d;
-        public static final int ListView03=0x7f090017;
-        public static final int Realisateur=0x7f090010;
-        public static final int Titre=0x7f09000f;
-        public static final int acteurFiche=0x7f09001e;
-        public static final int action_settings=0x7f090024;
-        public static final int button1=0x7f09000c;
-        public static final int close_button=0x7f090015;
-        public static final int dateSortie=0x7f09001b;
-        public static final int descriptionFiche=0x7f09001f;
-        public static final int editText1=0x7f090009;
-        public static final int editText2=0x7f09000b;
-        public static final int imageView1=0x7f090023;
-        public static final int item1=0x7f090025;
-        public static final int item2=0x7f090026;
-        public static final int item3=0x7f090027;
-        public static final int item4=0x7f090028;
-        public static final int limitFiche=0x7f09001c;
-        public static final int linearLayout1=0x7f090018;
-        public static final int louerfilm=0x7f090020;
-        public static final int memo=0x7f090021;
-        public static final int memoButton=0x7f090022;
-        public static final int nbrExemplaire=0x7f09001d;
-        public static final int open_button=0x7f090014;
-        public static final int realisateurFiche=0x7f09001a;
-        public static final int search=0x7f090012;
-        public static final int searchbt=0x7f090013;
-        public static final int status_text=0x7f090016;
-        public static final int text=0x7f09000e;
-        public static final int textView1=0x7f090000;
-        public static final int textView2=0x7f090008;
-        public static final int textView3=0x7f09000a;
-        public static final int titreFiche=0x7f090019;
+        public static final int Action=0x7f0a0001;
+        public static final int Aventure=0x7f0a0002;
+        public static final int Comedie=0x7f0a0003;
+        public static final int Documentaire=0x7f0a0006;
+        public static final int Drame=0x7f0a0004;
+        public static final int Fantastique=0x7f0a0005;
+        public static final int Jeunesse=0x7f0a0007;
+        public static final int ListView01=0x7f0a0013;
+        public static final int ListView02=0x7f0a000d;
+        public static final int ListView03=0x7f0a0019;
+        public static final int Realisateur=0x7f0a0012;
+        public static final int Titre=0x7f0a0011;
+        public static final int acteurFiche=0x7f0a0021;
+        public static final int action_settings=0x7f0a0027;
+        public static final int button1=0x7f0a000c;
+        public static final int close_button=0x7f0a0017;
+        public static final int dateSortie=0x7f0a001e;
+        public static final int descriptionFiche=0x7f0a0022;
+        public static final int editText1=0x7f0a0009;
+        public static final int editText2=0x7f0a000b;
+        public static final int gallery1=0x7f0a000e;
+        public static final int image1=0x7f0a000f;
+        public static final int imageView1=0x7f0a0026;
+        public static final int item1=0x7f0a0028;
+        public static final int item2=0x7f0a0029;
+        public static final int item3=0x7f0a002a;
+        public static final int item4=0x7f0a002b;
+        public static final int item5=0x7f0a002c;
+        public static final int item6=0x7f0a002d;
+        public static final int limitFiche=0x7f0a001f;
+        public static final int linearLayout1=0x7f0a001b;
+        public static final int louerfilm=0x7f0a0023;
+        public static final int memo=0x7f0a0024;
+        public static final int memoButton=0x7f0a0025;
+        public static final int nbrExemplaire=0x7f0a0020;
+        public static final int open_button=0x7f0a0016;
+        public static final int realisateurFiche=0x7f0a001d;
+        public static final int search=0x7f0a0014;
+        public static final int searchbt=0x7f0a0015;
+        public static final int status_text=0x7f0a0018;
+        public static final int text=0x7f0a0010;
+        public static final int textView1=0x7f0a0000;
+        public static final int textView2=0x7f0a0008;
+        public static final int textView3=0x7f0a000a;
+        public static final int titreFiche=0x7f0a001c;
+        public static final int video_view=0x7f0a001a;
     }
     public static final class layout {
         public static final int about=0x7f030000;
@@ -100,24 +105,29 @@ public final class R {
         public static final int drame=0x7f030007;
         public static final int fantastique=0x7f030008;
         public static final int fiction=0x7f030009;
-        public static final int item=0x7f03000a;
-        public static final int jeunesse=0x7f03000b;
-        public static final int ligne=0x7f03000c;
-        public static final int policier=0x7f03000d;
-        public static final int searchable=0x7f03000e;
-        public static final int searchview_actionbar=0x7f03000f;
-        public static final int serie=0x7f030010;
-        public static final int vudetail=0x7f030011;
+        public static final int galleryview=0x7f03000a;
+        public static final int item=0x7f03000b;
+        public static final int jeunesse=0x7f03000c;
+        public static final int ligne=0x7f03000d;
+        public static final int policier=0x7f03000e;
+        public static final int searchable=0x7f03000f;
+        public static final int searchview_actionbar=0x7f030010;
+        public static final int serie=0x7f030011;
+        public static final int videoview=0x7f030012;
+        public static final int vudetail=0x7f030013;
     }
     public static final class menu {
-        public static final int accueil=0x7f080000;
-        public static final int menu=0x7f080001;
-        public static final int menuconnexion=0x7f080002;
+        public static final int accueil=0x7f090000;
+        public static final int menu=0x7f090001;
+        public static final int menuconnexion=0x7f090002;
+    }
+    public static final class raw {
+        public static final int avengers2=0x7f050000;
     }
     public static final class string {
-        public static final int action_settings=0x7f060002;
-        public static final int app_name=0x7f060000;
-        public static final int hello_world=0x7f060001;
+        public static final int action_settings=0x7f070002;
+        public static final int app_name=0x7f070000;
+        public static final int hello_world=0x7f070001;
     }
     public static final class style {
         /** 
@@ -141,11 +151,11 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f070000;
+        public static final int AppBaseTheme=0x7f080000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f070001;
+        public static final int AppTheme=0x7f080001;
     }
     public static final class xml {
         public static final int action=0x7f040000;
@@ -157,4 +167,25 @@ public final class R {
         public static final int jeunesse=0x7f040006;
         public static final int serie=0x7f040007;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a MyGallery.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #MyGallery_android_galleryItemBackground android:galleryItemBackground}</code></td><td></td></tr>
+           </table>
+           @see #MyGallery_android_galleryItemBackground
+         */
+        public static final int[] MyGallery = {
+            0x0101004c
+        };
+        /**
+          <p>This symbol is the offset where the {@link android.R.attr#galleryItemBackground}
+          attribute's value can be found in the {@link #MyGallery} array.
+          @attr name android:galleryItemBackground
+        */
+        public static final int MyGallery_android_galleryItemBackground = 0;
+    };
 }

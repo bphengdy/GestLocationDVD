@@ -36,6 +36,8 @@
         <activity android:name="Jeunesse"></activity>
         <activity android:name="Documentaire"></activity>
         <activity android:name="Fantastique"></activity>
+        <activity android:name="GalleryView"></activity>
+        <activity android:name="AndroidVideoView"></activity>
     </application>
 	
 </manifest>

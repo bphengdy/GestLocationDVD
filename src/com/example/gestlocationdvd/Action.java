@@ -141,6 +141,9 @@ public class Action extends Activity {
 			Intent intent4 = new Intent(Action.this, Searchable.class);
 			intent4.putExtra("id_client", test.getInt("id_client"));
 			startActivity(intent4);
+		case R.id.item5:
+			Intent intent5 = new Intent(Action.this, AndroidVideoView.class);
+			startActivity(intent5);
 		}
 		return true;
 	}

@@ -164,6 +164,15 @@ public class Accueil extends Activity implements OnClickListener {
 			Intent intent4 = new Intent(Accueil.this, Searchable.class);
 			intent4.putExtra("id_client", test2.getInt("id_client"));
 			startActivity(intent4);
+			break;
+		case R.id.item5:
+			Intent intent5 = new Intent(Accueil.this, AndroidVideoView.class);
+			startActivity(intent5);
+			break;
+		case R.id.item6:
+			Intent intent6 = new Intent(Accueil.this, GalleryView.class);
+			startActivity(intent6);
+			break;
 		}
 		return true;
 	}
